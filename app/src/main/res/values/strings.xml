@@ -3,5 +3,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="add_button">Add to list</string>
+    <string name="blank_grcoery_warning">Groceries must not be blank</string>
+    <string name="groceries_ok">Ok</string>
+    <string name="delete_from_list">Delete from list</string>
+    <string name="delete_keyword">Delete</string>
+    <string name="cancel_dialog">Cancel</string>
 
 </resources>

@@ -17,20 +17,31 @@ import com.example.cwallace.grocerylist.services.DatabaseService;
 
 import java.util.ArrayList;
 
-
+/**
+ * This class is the main activity for the grocery list application
+ * Handles delegation of listeners to views and creation of layout
+ */
 public class GroceryActivity extends AppCompatActivity {
 
+    /**
+     * Inhereited method from AppCompatActivity called upon initialization
+     * of activity
+     * @param savedInstanceState Data to be passed from other activities, null
+     *                           for this application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        DatabaseService dbService = new DatabaseService(this);
         setContentView(R.layout.activity_grocery);
+        //Custom class created to handle database operations
+        DatabaseService dbService = new DatabaseService(this);
         ArrayList<String> dataStore = dbService.readGroceriesFromDb();
-        //ArrayList<String> dataStore = new ArrayList<String>();
         Button button = (Button)findViewById(R.id.add_button);
         ListView activeList = (ListView)findViewById(R.id.grocery_list);
+        //Set the ListView's adapter to a default array adapter with the list read form the database as its content
         activeList.setAdapter(new ArrayAdapter<String>(this, R.layout.grocery_layout, dataStore));
+        //Below are custom Onclick listeners I created so that this activity stays clean :)
         activeList.setOnItemClickListener(new DeleteEntryListener(this, dataStore));
         activeList.setOnItemLongClickListener(new EditEntryListener(this, dataStore));
         button.setOnClickListener(new AddToListListener(this));

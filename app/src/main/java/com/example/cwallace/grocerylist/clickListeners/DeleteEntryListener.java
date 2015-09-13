@@ -15,6 +15,7 @@ import com.example.cwallace.grocerylist.services.DatabaseService;
 import java.util.List;
 
 /**
+ * Onclick listener implementation that will delete items from the database
  * Created by cwallace on 9/7/2015.
  */
 public class DeleteEntryListener implements AdapterView.OnItemClickListener {
@@ -29,16 +30,15 @@ public class DeleteEntryListener implements AdapterView.OnItemClickListener {
         databaseService = new DatabaseService(context);
     }
 
-
     @Override
     public void onItemClick(final AdapterView<?> parent, View view, final int position, long id) {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
         alertDialogBuilder
-                .setTitle("Delete from list")
+                .setTitle(context.getString(R.string.delete_from_list))
                 .setCancelable(true)
-                .setPositiveButton("Delete",
+                .setPositiveButton(context.getString(R.string.delete_keyword),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -50,8 +50,8 @@ public class DeleteEntryListener implements AdapterView.OnItemClickListener {
                             }
                         }
                 )
-                .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
+                .setNegativeButton(context.getString(R.string.cancel_dialog), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         // if this button is clicked, just close
                         // the dialog box and do nothing
                         dialog.cancel();
